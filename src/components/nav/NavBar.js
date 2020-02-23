@@ -2,6 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 
+// component for the nav bar at the top of page.
+// The component <Link> is what gives us the clickable link. And has (prop) that says "go here". importing Link from react-router-DOM.
+
+// second part is route to show what was actually clicked...in application views. WHat to do when the button is actually clicked. 
 const NavBar = () => {
   return (
     <header>

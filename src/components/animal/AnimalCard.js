@@ -1,6 +1,8 @@
 import React from "react";
 
-const AnimalCard = () => {
+// can also destructure props to ({animal})...
+
+const AnimalCard = (props) => {
   return (
     <div className="card">
       <div className="card-content">
@@ -8,9 +10,9 @@ const AnimalCard = () => {
           <img src={require("./dog.svg")} alt="My Dog" />
         </picture>
         <h3>
-          Name: <span className="card-petname">Doodles</span>
+          Name: <span className="card-petname">{props.id}</span>
         </h3>
-        <p>Breed: Poodle</p>
+        <p>{props.breed}</p>
       </div>
     </div>
   );
