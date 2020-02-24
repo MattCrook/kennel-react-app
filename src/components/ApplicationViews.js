@@ -3,16 +3,16 @@ import React from "react";
 import Home from "./home/Home";
 
 import AnimalCard from "./animal/AnimalCard";
-import AnimalList from "./animal/AnimalList";
+//import AnimalList from "./animal/AnimalList";
 //only include these once they are built - previous practice exercise
 import LocationCard from "./location/LocationCard";
-import LocationList from "./location/LocationList";
+// import LocationList from "./location/LocationList";
 
 import EmployeeCard from "./employee/EmployeeCard";
-import EmployeeList from "./employee/EmployeeList";
+// import EmployeeList from "./employee/EmployeeList";
 
 import OwnerCard from "./owner/OwnerCard";
-import OwnerList from "./owner/OwnerList";
+// import OwnerList from "./owner/OwnerList";
 
 
 const ApplicationViews = () => {
@@ -31,18 +31,6 @@ const ApplicationViews = () => {
           return <AnimalCard />;
         }}
       />
-      <Route
-        path="/animals"
-        render={props => {
-          return <AnimalList />;
-        }}
-      />
-      <Route
-      path="/employees"
-      render={props => {
-        return <EmployeeList />;
-      }}
-      />
             <Route
       path="/employees"
       render={props => {
@@ -52,19 +40,7 @@ const ApplicationViews = () => {
       <Route
       path="/owners"
       render={props => {
-        return  <OwnerList />
-      }}
-      />
-      <Route
-      path="/owners"
-      render={props => {
         return <OwnerCard />
-      }}
-      />
-      <Route 
-      path="/locations"
-      render={props => {
-        return <LocationList />
       }}
       />
       <Route

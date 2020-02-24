@@ -1,4 +1,5 @@
 import React from "react";
+import "./Animal.css"
 
 // can also destructure props to ({animal})...
 
