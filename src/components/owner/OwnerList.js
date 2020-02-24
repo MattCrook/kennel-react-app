@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import OwnersManager from "../../modules/OwnersManager";
-import OwnersCard from "./OwnersCard";
+import OwnerCard from "./OwnerCard";
 
 const OwnerList = () => {
   //the initial state is an empty array
@@ -23,7 +23,7 @@ const OwnerList = () => {
   return (
     <div className="container-cards">
       {owners.map(owner => (
-        <OwnersCard key={owner.id} owner={owner} />
+        <OwnerCard key={owner.id} owner={owner} />
       ))}
     </div>
   );
