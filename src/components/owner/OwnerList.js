@@ -1,39 +1,39 @@
 import React, { useState, useEffect } from "react";
-import OwnersManager from "../../modules/OwnersManager";
 import OwnerCard from "./OwnerCard";
+import OwnerManager from "../../modules/OwnersManager";
 
 const OwnerList = () => {
-  //the initial state is an empty array
   const [owners, setOwners] = useState([]);
+
+  const removeOwner = async (id) => {
+    try {
+      OwnerManager.delete(id);
+      const ownersFromAPI = OwnerManager.getAll();
+      setOwners(ownersFromAPI);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const getOwners = async () => {
     try {
-      const OwnersFromAPI = await OwnersManager.getAll();
+      const OwnersFromAPI = await OwnerManager.getAll();
       setOwners(OwnersFromAPI);
     } catch (error) {
       console.log(error);
     }
   };
 
-  // got the animals from the API on the component's first render
   useEffect(() => {
     getOwners();
   }, []);
 
-  // Finally we use map() to "loop over" the animals array to show a list of animal cards
   return (
     <div className="container-cards">
       {owners.map(owner => (
-        <OwnerCard key={owner.id} owner={owner} />
+        <OwnerCard key={owner.id} owner={owner} removeOwner={removeOwner} />
       ))}
     </div>
   );
 };
 
 export default OwnerList;
-
-/*
-The function argument to useEffect tells React to call the getAnimals() function
-(that will fetch data from our API).
-The empty array argument tells React to call the function
- on the first render of the component.
-*/

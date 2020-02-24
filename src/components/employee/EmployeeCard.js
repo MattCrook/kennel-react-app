@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const EmployeeCard = props => {
   return (
     <div className="card">
@@ -10,6 +9,7 @@ const EmployeeCard = props => {
         </h3>
         <p>Position: {props.employee.role}</p>
         <p>Favorite breed: {props.employee.favoriteBreed}</p>
+        <button type="button" onClick={() => props.fireEmployee(props.employee.name)}>Fire</button>
       </div>
     </div>
   );

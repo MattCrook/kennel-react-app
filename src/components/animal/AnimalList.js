@@ -8,12 +8,12 @@ const AnimalList = () => {
 
   const deleteAnimal = async (id) => {
     try {
-      AnimalManager.delete(id)
-      const animalsFromAPI = await AnimalManager.getAll()
+      AnimalManager.delete(id);
+      const animalsFromAPI = await AnimalManager.getAll();
       setAnimals(animalsFromAPI);
     } catch (error) {
       console.log(error);
-    };
+    }
   };
 
   const getAnimals = async () => {
@@ -33,7 +33,11 @@ const AnimalList = () => {
   return (
     <div className="container-cards">
       {animals.map(animal => (
-        <AnimalCard key={animal.id} animal={animal} />
+        <AnimalCard
+          key={animal.id}
+          animal={animal}
+          deleteAnimal={deleteAnimal}
+        />
       ))}
     </div>
   );
