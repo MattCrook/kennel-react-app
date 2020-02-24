@@ -14,7 +14,6 @@ import EmployeeCard from "./employee/EmployeeCard";
 import OwnerCard from "./owner/OwnerCard";
 // import OwnerList from "./owner/OwnerList";
 
-
 const ApplicationViews = () => {
   return (
     <React.Fragment>
@@ -31,23 +30,23 @@ const ApplicationViews = () => {
           return <AnimalCard />;
         }}
       />
-            <Route
-      path="/employees"
-      render={props => {
-        return <EmployeeCard />;
-      }}
+      <Route
+        path="/employees"
+        render={props => {
+          return <EmployeeCard />;
+        }}
       />
       <Route
-      path="/owners"
-      render={props => {
-        return <OwnerCard />
-      }}
+        path="/owners"
+        render={props => {
+          return <OwnerCard />;
+        }}
       />
       <Route
-      path="/locations"
-      render={props => {
-        return <LocationCard />
-      }}
+        path="/locations"
+        render={props => {
+          return <LocationCard />;
+        }}
       />
     </React.Fragment>
   );
