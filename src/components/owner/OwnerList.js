@@ -6,8 +6,12 @@ const OwnerList = () => {
   //the initial state is an empty array
   const [owners, setOwners] = useState([]);
   const getOwners = async () => {
-    const OwnersFromAPI = await OwnersManager.getAll();
-    setOwners(OwnersFromAPI);
+    try {
+      const OwnersFromAPI = await OwnersManager.getAll();
+      setOwners(OwnersFromAPI);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // got the animals from the API on the component's first render
@@ -19,7 +23,7 @@ const OwnerList = () => {
   return (
     <div className="container-cards">
       {owners.map(owner => (
-        <OwnerCard />
+        <OwnersCard key={owner.id} owner={owner} />
       ))}
     </div>
   );

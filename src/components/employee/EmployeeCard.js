@@ -1,17 +1,14 @@
 import React from "react";
 
-const EmployeeCard = () => {
+const EmployeeCard = props => {
   return (
     <div className="card">
       <div className="card-content">
-        <picture>
-          {/* <img src={require("./dan.svg")} alt="" /> */}
-        </picture>
         <h3>
-          Name: <span className="employee-name">Dan</span>
+          Name: <span className="employee-name">{props.employee.name}</span>
         </h3>
-        <p>Position: React team</p>
-        <p>Favorite breed: Golden Retriever</p>
+        <p>Position: {props.employee.role}</p>
+        <p>Favorite breed: {props.employee.favoriteBreed}</p>
       </div>
     </div>
   );

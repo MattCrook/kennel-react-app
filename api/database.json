@@ -6,10 +6,10 @@
   ],
 
   "employees": [
-    { "id": 1, "name": "Steve", "role": "Tour Guide" },
-    { "id": 2, "name": "Deck", "role": "Groomer" },
-    { "id": 3, "name": "Emily", "role": "Receptionist" },
-    { "id": 4, "name": "Tim", "role": "Sales" }
+    { "id": 1, "name": "Steve", "role": "Tour Guide", "favoriteBreed": "Golden Retriever"},
+    { "id": 2, "name": "Deck", "role": "Groomer", "favoriteBreed": "Pitbull"},
+    { "id": 3, "name": "Emily", "role": "Receptionist", "favoriteBreed": "Wheaton Terrier"},
+    { "id": 4, "name": "Tim", "role": "Sales", "favoriteBreed": "German Shepard"}
   ],
   "locations": [
     { "id": 1, "city": "Nashville", "address": "100 North" },

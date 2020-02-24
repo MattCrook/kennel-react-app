@@ -5,8 +5,12 @@ import EmployeeCard from "./EmployeeCard";
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const getEmployees = async () => {
-    const employeesFromAPI = await EmployeeManager.getAll();
-    setEmployees(employeesFromAPI);
+    try {
+      const employeesFromAPI = await EmployeeManager.getAll();
+      setEmployees(employeesFromAPI);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -16,7 +20,7 @@ const EmployeeList = () => {
   return (
     <div className="container-cards">
       {employees.map(employee => (
-        <EmployeeCard />
+        <EmployeeCard key={employee.id} employee={employee} />
       ))}
     </div>
   );
