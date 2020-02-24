@@ -10,9 +10,9 @@ const AnimalCard = (props) => {
           <img src={require("./dog.svg")} alt="My Dog" />
         </picture>
         <h3>
-          Name: <span className="card-petname">{props.id}</span>
+          Name: <span className="card-petname">{props.animal.name}</span>
         </h3>
-        <p>{props.breed}</p>
+        <p>Breed: {props.animal.breed}</p>
       </div>
     </div>
   );
