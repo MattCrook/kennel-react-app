@@ -11,7 +11,7 @@ const AnimalManager = {
   },
   delete(id) {
     return fetch(`${remoteURL}/animals/${id}`, {
-      method: "PUT",
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json"
       },

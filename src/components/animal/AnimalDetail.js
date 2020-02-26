@@ -4,6 +4,9 @@ import "./AnimalDetail.css";
 
 const AnimalDetail = props => {
   const [animal, setAnimal] = useState({ name: "", breed: "" });
+  const [isLoading, setIsLoading] = useState(true);
+  // initial state of isLoading is true.
+  // when loading is true, we disable the button
 
   useEffect(() => {
     //get(id) from AnimalManager and hang on to the data; put it into state
@@ -12,8 +15,18 @@ const AnimalDetail = props => {
         name: animal.name,
         breed: animal.breed
       });
+      setIsLoading(false); // enables the button, means button is clickable.
     });
   }, [props.animalId]);
+
+  const handleDelete = () => {
+    //invoke the delete function in AnimalManger and re-direct to the animal list.
+    // disable the button again
+    setIsLoading(true);
+    AnimalManager.delete(props.animalId).then(() => props.history.push("/animals")
+      // pushing onto history stack to change the view once button is clicked.
+    );
+  };
 
   return (
     <div className="card">
@@ -25,9 +38,14 @@ const AnimalDetail = props => {
           Name: <span style={{ color: "darkslategrey" }}>{animal.name}</span>
         </h3>
         <p>Breed: {animal.breed}</p>
+        <button type="button" disabled={isLoading} onClick={handleDelete}>
+          Discharge
+        </button>
       </div>
     </div>
   );
 };
 
 export default AnimalDetail;
+
+// create function in component with conditional to confirm a deletion of an animal.

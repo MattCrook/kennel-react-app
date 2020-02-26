@@ -6,16 +6,6 @@ const LocationList = () => {
   //the initial state is an empty array
   const [locations, setLocations] = useState([]);
 
-  const closeLocation = async (id) => {
-    try {
-      LocationManager.deleteLocation(id);
-      const locationsFromAPI = await LocationManager.getAll();
-      setLocations(locationsFromAPI);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const getLocations = async () => {
     try {
       const locationsFromAPI = await LocationManager.getAll();
@@ -25,6 +15,16 @@ const LocationList = () => {
     }
   };
   //get locations from api on components first render
+
+  const closeLocation = async id => {
+    try {
+      LocationManager.deleteLocation(id);
+      const locationsFromAPI = await LocationManager.getAll();
+      setLocations(locationsFromAPI);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     getLocations();
   }, []);

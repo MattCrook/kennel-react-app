@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from "react";
 import OwnerCard from "./OwnerCard";
-import OwnerManager from "../../modules/OwnersManager";
+import OwnerManager from "../../modules/OwnerManager";
 
 const OwnerList = () => {
   const [owners, setOwners] = useState([]);
 
-  const removeOwner = async (id) => {
-    try {
-      OwnerManager.delete(id);
-      const ownersFromAPI = OwnerManager.getAll();
-      setOwners(ownersFromAPI);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   const getOwners = async () => {
     try {
       const OwnersFromAPI = await OwnerManager.getAll();
       setOwners(OwnersFromAPI);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const removeOwner = async id => {
+    try {
+      OwnerManager.delete(id);
+      const ownersFromAPI = OwnerManager.getAll();
+      setOwners(ownersFromAPI);
     } catch (error) {
       console.log(error);
     }
