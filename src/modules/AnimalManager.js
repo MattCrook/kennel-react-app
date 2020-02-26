@@ -1,18 +1,22 @@
 const remoteURL = "http://localhost:5002";
 
 const AnimalManager = {
-  get(id) {
-    return fetch(`${remoteURL}/animals/${id}`).then(resp => resp.json());
+  async get(id) {
+    const resp = await fetch(`${remoteURL}/animals/${id}`);
+    return await resp.json();
   },
   async getAll() {
     const resp = await fetch(`${remoteURL}/animals`);
     return await resp.json();
   },
-  async delete(id) {
-    const result = await fetch(`${remoteURL}/animals/${id}`, {
-      method: "DELETE"
+  delete(id) {
+    return fetch(`${remoteURL}/animals/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(id)
     });
-    return await result.json();
   }
 };
 

@@ -2,6 +2,8 @@ import React from "react";
 import "./Animal.css";
 
 // can also destructure props to ({animal})...
+// props is an object..is the animal object 
+// has the key of animal on it
 
 const AnimalCard = props => {
   return (
