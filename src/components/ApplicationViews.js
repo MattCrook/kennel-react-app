@@ -1,19 +1,14 @@
 import { Route } from "react-router-dom";
 import React from "react";
 import Home from "./home/Home";
-
-import AnimalCard from "./animal/AnimalCard";
+// import AnimalCard from "./animal/AnimalCard";
+// import LocationCard from "./location/LocationCard";
+// import EmployeeCard from "./employee/EmployeeCard";
+// import OwnerCard from "./owner/OwnerCard";
 import AnimalList from "./animal/AnimalList";
-//only include these once they are built - previous practice exercise
-import LocationCard from "./location/LocationCard";
 import LocationList from "./location/LocationList";
-
-import EmployeeCard from "./employee/EmployeeCard";
 import EmployeeList from "./employee/EmployeeList";
-
-import OwnerCard from "./owner/OwnerCard";
 import OwnerList from "./owner/OwnerList";
-
 
 const ApplicationViews = () => {
   return (
@@ -28,50 +23,26 @@ const ApplicationViews = () => {
       <Route
         path="/animals"
         render={props => {
-          return <AnimalCard />;
+          return <AnimalList {...props} />;
         }}
       />
       <Route
-        path="/animals"
+        path="/employees"
         render={props => {
-          return <AnimalList />;
+          return <EmployeeList {...props} />;
         }}
       />
       <Route
-      path="/employees"
-      render={props => {
-        return <EmployeeList />;
-      }}
-      />
-            <Route
-      path="/employees"
-      render={props => {
-        return <EmployeeCard />;
-      }}
+        path="/owners"
+        render={props => {
+          return <OwnerList {...props} />;
+        }}
       />
       <Route
-      path="/owners"
-      render={props => {
-        return  <OwnerList />
-      }}
-      />
-      <Route
-      path="/owners"
-      render={props => {
-        return <OwnerCard />
-      }}
-      />
-      <Route 
-      path="/locations"
-      render={props => {
-        return <LocationList />
-      }}
-      />
-      <Route
-      path="/locations"
-      render={props => {
-        return <LocationCard />
-      }}
+        path="/locations"
+        render={props => {
+          return <LocationList {...props} />;
+        }}
       />
     </React.Fragment>
   );

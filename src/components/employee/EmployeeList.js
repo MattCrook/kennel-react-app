@@ -4,6 +4,17 @@ import EmployeeCard from "./EmployeeCard";
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
+
+  const fireEmployee = async id => {
+    try {
+      EmployeeManager.delete(id);
+      const employeesFromAPI = await EmployeeManager.getAll();
+      setEmployees(employeesFromAPI);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const getEmployees = async () => {
     try {
       const employeesFromAPI = await EmployeeManager.getAll();
@@ -20,7 +31,11 @@ const EmployeeList = () => {
   return (
     <div className="container-cards">
       {employees.map(employee => (
-        <EmployeeCard key={employee.id} employee={employee} />
+        <EmployeeCard
+          key={employee.id}
+          employee={employee}
+          fireEmployee={fireEmployee}
+        />
       ))}
     </div>
   );
