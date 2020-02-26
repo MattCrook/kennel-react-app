@@ -1,12 +1,14 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useState, useEffect } from "react";
 import AnimalManager from "../../modules/AnimalManager";
 import AnimalCard from "./AnimalCard";
-import { render } from "@testing-library/react";
 
 const AnimalList = () => {
   //the initial state is an empty array
   // current animals and a way to set those animals
   // animals is an array we just pulled out of state. ... passed and used line 37.
+  // if the array is empty, only runs on first render of the page.
+  // however, if there is anything in the array, it runs every time there is a change to the array.
+
   const [animals, setAnimals] = useState([]);
 
   const getAnimals = async () => {

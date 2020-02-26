@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 
 const EmployeeCard = props => {
   return (
@@ -10,6 +12,9 @@ const EmployeeCard = props => {
         <p>Position: {props.employee.role}</p>
         <p>Favorite breed: {props.employee.favoriteBreed}</p>
         <button type="button" onClick={() => props.fireEmployee(props.employee.name)}>Fire</button>
+        <Link to={`/employees/${props.employee.id}`}>
+          <button>Details</button>
+        </Link>
       </div>
     </div>
   );

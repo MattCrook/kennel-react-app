@@ -5,15 +5,27 @@
     { "id": 3, "name": "Esme", "breed": "Pitbull" },
     { "id": 4, "name": "Gus", "breed": "Lab" },
     { "id": 5, "name": "Lucy", "breed": "Wheaton Terrier" }
-
-
   ],
-
   "employees": [
-    { "id": 1, "name": "Steve", "role": "Tour Guide", "favoriteBreed": "Golden Retriever"},
-    { "id": 2, "name": "Deck", "role": "Groomer", "favoriteBreed": "Pitbull"},
-    { "id": 3, "name": "Emily", "role": "Receptionist", "favoriteBreed": "Wheaton Terrier"},
-    { "id": 4, "name": "Tim", "role": "Sales", "favoriteBreed": "German Shepard"}
+    {
+      "id": 1,
+      "name": "Steve",
+      "role": "Tour Guide",
+      "favoriteBreed": "Golden Retriever"
+    },
+    { "id": 2, "name": "Deck", "role": "Groomer", "favoriteBreed": "Pitbull" },
+    {
+      "id": 3,
+      "name": "Emily",
+      "role": "Receptionist",
+      "favoriteBreed": "Wheaton Terrier"
+    },
+    {
+      "id": 4,
+      "name": "Tim",
+      "role": "Sales",
+      "favoriteBreed": "German Shepard"
+    }
   ],
   "locations": [
     { "id": 1, "city": "Nashville", "address": "100 North" },

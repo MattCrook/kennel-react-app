@@ -1,8 +1,9 @@
 const remoteURL = "http://localhost:5002";
 
 const EmployeeManager = {
-  getId(id) {
-    return fetch(`${remoteURL}/employees/${id}`).then(resp => resp.json());
+  async get(id) {
+    const resp = await fetch(`${remoteURL}/employees/${id}`);
+    return await resp.json();
   },
   async getAll() {
     const resp = await fetch(`${remoteURL}/employees`);

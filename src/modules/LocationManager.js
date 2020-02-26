@@ -1,8 +1,9 @@
 const remoteURL = "http://localhost:5002";
 
 const LocationManager = {
-  getId(id) {
-    return fetch(`${remoteURL}/locations/${id}`).then(resp => resp.json());
+  async get(id) {
+    const resp = await fetch(`${remoteURL}/locations/${id}`);
+    return await resp.json();
   },
   async getAll() {
     const resp = await fetch(`${remoteURL}/locations`);
