@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import RememberMe from "./CheckBox";
 
 const Login = props => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -17,13 +18,22 @@ const Login = props => {
         the customer enters into session storage.
         ...Let's just trust the user... That's a good idea, right????
     */
+    // the push("/") says when the user logs in, redirect to the home page.
     sessionStorage.setItem("credentials", JSON.stringify(credentials));
-    props.history.push("/animals");
-    props.history.push("/employees");
-    props.history.push("/owners");
-
+    props.history.push("/");
   };
 
+
+  const RememberMe = () => {
+    const [checkBoxes, setCheckBoxes] = useState( {checked: ""} );
+    const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckBoxChange = event => {
+    const stateToChange = { ...checkBoxes };
+    stateToChange[event.target.id] = event.target.checked;
+    setCheckBoxes(stateToChange);
+  };
+  };
   return (
     <form onSubmit={handleLogin}>
       <fieldset>
@@ -49,6 +59,14 @@ const Login = props => {
           <label htmlFor="inputPassword">Password</label>
         </div>
         <button type="submit">Sign in</button>
+        <label>Remember Me</label>
+        <input
+          type="checkbox"
+          onChange={handleCheckBoxChange}
+          checked=""
+          disabled={isChecked}
+          onClick={}
+        ></input>
       </fieldset>
     </form>
   );

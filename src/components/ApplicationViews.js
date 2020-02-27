@@ -144,7 +144,7 @@ const ApplicationViews = () => {
           return <OwnerForm {...props} />;
         }}
       />
-      <Route path="/login" component={Login} />
+      <Route exact path="/login" component={Login} />
     </React.Fragment>
   );
 };

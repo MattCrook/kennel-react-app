@@ -21,6 +21,7 @@ const EmployeeList = (props) => {
       setEmployees(employeesFromAPI);
     } catch (error) {
       console.log(error);
+      window.alert("Employee not found");
     }
   };
 
