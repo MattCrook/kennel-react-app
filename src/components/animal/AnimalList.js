@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import AnimalManager from "../../modules/AnimalManager";
 import AnimalCard from "./AnimalCard";
 
-const AnimalList = () => {
+const AnimalList = (props) => {
   //the initial state is an empty array
   // current animals and a way to set those animals
   // animals is an array we just pulled out of state. ... passed and used line 37.
@@ -37,9 +37,19 @@ const AnimalList = () => {
     getAnimals();
   }, []);
 
+
   // Finally we use map() to "loop over" the animals array to show a list of animal cards
   // animals is an empty array until we call useEffect...and will populate the array with getAnimals
+
   return (
+    <>
+    <section className="section-content">
+    <button type="button"
+        className="btn"
+        onClick={() => {props.history.push("/animals/new")}}>
+        Admit Animal
+    </button>
+  </section>
     <div className="container-cards">
       {animals.map(animal => (
         <AnimalCard
@@ -49,6 +59,7 @@ const AnimalList = () => {
         />
       ))}
     </div>
+    </>
   );
 };
 

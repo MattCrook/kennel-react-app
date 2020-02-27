@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import AnimalManager from "../../modules/AnimalManager";
 import "./AnimalDetail.css";
+import {firstLetterCase} from '../../modules/helpers'
+
 
 const AnimalDetail = props => {
   const [animal, setAnimal] = useState({ name: "", breed: "" });
@@ -16,6 +18,7 @@ const AnimalDetail = props => {
         breed: animal.breed
       });
       setIsLoading(false); // enables the button, means button is clickable.
+      firstLetterCase(animal.name)
     });
   }, [props.animalId]);
 
