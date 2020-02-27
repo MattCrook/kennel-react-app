@@ -45,3 +45,25 @@
 .card button:hover {
   background-color: darkblue;
 }
+
+.btn {
+  cursor: pointer;
+  text-align: center;
+  color: beige;
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: uppercase;
+  font-weight: 200;
+  background: #8a2387;
+  background: linear-gradient(to right, #f27121, #e94057, #8a2387);
+  border: 1px solid black;
+  box-shadow: 3px 3px 3px 3px var(--darkLiver);
+  border-radius: 5px;
+}
+.section-content {
+  display: flex;
+  justify-content: center;
+}
+
+.container-cards {
+  justify-content: flex-start;
+}

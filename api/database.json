@@ -1,10 +1,35 @@
 {
   "animals": [
-    { "id": 1, "name": "Doodles", "breed": "Poodle" },
-    { "id": 2, "name": "Decker", "breed": "German Shepherd" },
-    { "id": 3, "name": "Esme", "breed": "Pitbull" },
-    { "id": 4, "name": "Gus", "breed": "Lab" },
-    { "id": 5, "name": "Lucy", "breed": "Wheaton Terrier" }
+    {
+      "id": 1,
+      "name": "Doodles",
+      "breed": "Poodle"
+    },
+    {
+      "id": 2,
+      "name": "Decker",
+      "breed": "German Shepherd"
+    },
+    {
+      "id": 3,
+      "name": "Esme",
+      "breed": "Pitbull"
+    },
+    {
+      "id": 4,
+      "name": "Gus",
+      "breed": "Lab"
+    },
+    {
+      "id": 5,
+      "name": "Lucy",
+      "breed": "Wheaton Terrier"
+    },
+    {
+      "name": "Teddy",
+      "breed": "Golden Retriever",
+      "id": 6
+    }
   ],
   "employees": [
     {
@@ -13,7 +38,12 @@
       "role": "Tour Guide",
       "favoriteBreed": "Golden Retriever"
     },
-    { "id": 2, "name": "Deck", "role": "Groomer", "favoriteBreed": "Pitbull" },
+    {
+      "id": 2,
+      "name": "Deck",
+      "role": "Groomer",
+      "favoriteBreed": "Pitbull"
+    },
     {
       "id": 3,
       "name": "Emily",
@@ -28,15 +58,47 @@
     }
   ],
   "locations": [
-    { "id": 1, "city": "Nashville", "address": "100 North" },
-    { "id": 2, "city": "Nashville", "address": "100 South" },
-    { "id": 3, "city": "Nashville", "address": "100 East" },
-    { "id": 4, "city": "Nashville", "address": "100 West" }
+    {
+      "id": 1,
+      "city": "Nashville",
+      "address": "100 North"
+    },
+    {
+      "id": 2,
+      "city": "Nashville",
+      "address": "100 South"
+    },
+    {
+      "id": 3,
+      "city": "Nashville",
+      "address": "100 East"
+    },
+    {
+      "id": 4,
+      "city": "Nashville",
+      "address": "100 West"
+    }
   ],
   "owners": [
-    { "id": 1, "phoneNumber": "615-930-8392", "name": "Matt" },
-    { "id": 2, "phoneNumber": "615-282-0292", "name": "Aimee" },
-    { "id": 3, "phoneNumber": "615-928-9203", "name": "Gray" },
-    { "id": 4, "phoneNumber": "615-829-9203", "name": "Andrew" }
+    {
+      "id": 1,
+      "phoneNumber": "615-930-8392",
+      "name": "Matt"
+    },
+    {
+      "id": 2,
+      "phoneNumber": "615-282-0292",
+      "name": "Aimee"
+    },
+    {
+      "id": 3,
+      "phoneNumber": "615-928-9203",
+      "name": "Gray"
+    },
+    {
+      "id": 4,
+      "phoneNumber": "615-829-9203",
+      "name": "Andrew"
+    }
   ]
 }

@@ -17,7 +17,17 @@ const AnimalManager = {
       },
       body: JSON.stringify(id)
     });
-  }
+  },
+  async post(newAnimal) {
+    const data = await fetch(`${remoteURL}/animals`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newAnimal)
+    });
+    return await data.json();
+}
 };
 
 export default AnimalManager;

@@ -14,7 +14,17 @@ const EmployeeManager = {
       method: "DELETE"
     });
     return await result.json();
-  }
+  },
+  async post(newEmployee) {
+    const data = await fetch(`${remoteURL}/employees`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newEmployee)
+    });
+    return await data.json();
+}
 };
 
 export default EmployeeManager;
