@@ -1,27 +1,34 @@
 import React, { useState } from "react";
 import EmployeeManager from "../../modules/EmployeeManager";
-import "./AnimalForm.css";
+import "./EmployeeForm.css";
 
-const AnimalForm = props => {
-  const [animal, setAnimal] = useState({ name: "", breed: "" });
+const EmployeeForm = props => {
+  const [employee, setEmployee] = useState({
+    name: "",
+    role: "",
+    favoriteBreed: ""
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFieldChange = evt => {
-    const stateToChange = { ...animal };
+    const stateToChange = { ...employee };
     stateToChange[evt.target.id] = evt.target.value;
-    setAnimal(stateToChange);
+    setEmployee(stateToChange);
   };
 
-  /*  Local method for validation, set loadingStatus, create animal      object, invoke the AnimalManager post method, and redirect to the full animal list
-   */
-  const constructNewAnimal = evt => {
+  const constructNewEmployee = evt => {
     evt.preventDefault();
-    if (animal.Name === "" || animal.breed === "") {
-      window.alert("Please input an animal name and breed");
+    if (
+      employee.name === "" ||
+      employee.role === "" ||
+      employee.favoriteBreed === ""
+    ) {
+      window.alert("Please input an employee name, role, and favorite breed");
     } else {
       setIsLoading(true);
-      // Create the animal and redirect user to animal list
-      EmployeeManager.post(animal).then(() => props.history.push("/animals"));
+      EmployeeManager.post(employee).then(() =>
+        props.history.push("/employees")
+      );
     }
   };
 
@@ -33,26 +40,34 @@ const AnimalForm = props => {
             <input
               type="text"
               required
-              onChange={handleFieldChange} // anytime there is a change to the field. if there is a change, handleFieldChange will fire off. 
+              onChange={handleFieldChange}
               id="name"
-              placeholder="Animal name"
+              placeholder="Employee name"
             />
-            <label htmlFor="animalName">Name</label>
+            <label htmlFor="employeeName">Name</label>
             <input
               type="text"
               required
               onChange={handleFieldChange}
-              id="breed"
-              placeholder="Breed"
+              id="role"
+              placeholder="Role"
             />
-            <label htmlFor="breed">Breed</label>
+            <label htmlFor="role">Role</label>
+            <input
+              type="text"
+              required
+              onChange={handleFieldChange}
+              id="favoriteBreed"
+              placeholder="Favorite Breed"
+            />
+            <label htmlFor="favoriteBreed">Favorite Breed</label>
           </div>
           <div className="alignRight">
             <button
               type="button"
               disabled={isLoading}
-              onClick={constructNewAnimal}
-            >
+              onClick={constructNewEmployee}
+              >
               Submit
             </button>
           </div>
@@ -62,4 +77,4 @@ const AnimalForm = props => {
   );
 };
 
-export default AnimalForm;
+export default EmployeeForm;

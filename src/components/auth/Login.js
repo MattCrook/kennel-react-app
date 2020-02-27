@@ -19,6 +19,9 @@ const Login = props => {
     */
     sessionStorage.setItem("credentials", JSON.stringify(credentials));
     props.history.push("/animals");
+    props.history.push("/employees");
+    props.history.push("/owners");
+
   };
 
   return (
