@@ -14,7 +14,17 @@ const OwnerManager = {
       method: "DELETE"
     });
     return await result.json();
-  }
+  },
+  async post(newOwner) {
+    const data = await fetch(`${remoteURL}/owners`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newOwner)
+    });
+    return await data.json();
+}
 };
 
 export default OwnerManager;
