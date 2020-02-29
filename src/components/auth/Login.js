@@ -10,18 +10,16 @@ const Login = props => {
     setCredentials(stateToChange);
   };
 
+  // if checked log the user in using local storage. If not, use session storage. 
+  // setIsChecked returns boolean, event.target has a "checked" attr...so passing it in.
   const handleCheckBoxChange = event => {
-    // debugger;
-    // const stateToChange = { ...isChecked };
-    // stateToChange[event.target.checked] = event.target.checked;
-    // setIsChecked(event.target.checked);
+    setIsChecked(event.target.checked);
   };
 
   const handleLogin = e => {
     e.preventDefault();
 
     // the push("/") says when the user logs in, redirect to the home page.
-// debugger;
     if (isChecked === true) {
       localStorage.setItem("credentials", JSON.stringify(credentials));
       props.history.push("/");
@@ -30,16 +28,7 @@ const Login = props => {
       props.history.push("/");
     }
   };
-  // const rememberMe = () => {
-  //   const [isChecked, setIsChecked] = useState(undefined);
-  //   return (
-  //     <>
-  //     isChecked={isChecked} onChange={setIsChecked}
-  //       Remember me
-  //     </>
 
-  //   );
-  // };
 
   return (
     <form onSubmit={handleLogin}>
@@ -69,10 +58,8 @@ const Login = props => {
         <label>Remember Me</label>
         <input
           type="checkbox"
-          onChange={handleCheckBoxChange}
-          // isChecked={isChecked}
-          // disabled={isChecked}
-        ></input>
+          onChange={handleCheckBoxChange}>
+          </input>
       </fieldset>
     </form>
   );

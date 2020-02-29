@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AnimalManager from "../../modules/AnimalManager";
-import "./AnimalSpotlight.css";
+import "./AnimalSpotLight.css";
 
 const AnimalSpotlight = props => {
   const [animal, setAnimal] = useState({ name: "", breed: "" });

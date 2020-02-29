@@ -29,7 +29,7 @@ const Home = () => {
         <br />
         500 Puppy Way
       </address>
-      <h1>Animal Spotlight</h1>
+      <h3>Animal Spotlight</h3>
       <button onClick={refreshSpotlightAnimal}>Reload &#x27f3;</button>
       {spotlightAnimalId && <AnimalSpotlight animalId={spotlightAnimalId} />
       // if we have a spotlight ID, then we will render, if we don't, then it ignores the render.
@@ -37,7 +37,7 @@ const Home = () => {
       // it will pass an animalId of zero. In which there is no 0, and the value of 0 in JS is falsy. Where as
       // the && will look for a truthy value.
       }
-      <h1>Location Spotlight</h1>
+      <h1>Visit One of Our Many Locations:</h1>
       <button onClick={refreshSpotlightLocation}>Reload &#x27f3;</button>
       {spotlightLocationId && (
         <LocationSpotlight locationId={spotlightLocationId} />

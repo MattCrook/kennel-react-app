@@ -29,6 +29,13 @@
       "breed": "Golden Retriever",
       "id": 6,
       "employeeId": 1
+    },
+    {
+      "name": "Raft",
+      "breed": "Cluster",
+      "id": 7,
+      "employeeId": 4
+
     }
   ],
   "employees": [
@@ -49,6 +56,12 @@
       "name": "Emily",
       "role": "Receptionist",
       "favoriteBreed": "Wheaton Terrier"
+    },
+    {
+      "name": "Dock",
+      "role": "Ops",
+      "favoriteBreed": "Kubernetes",
+      "id": 4
     }
   ],
   "locations": [
@@ -69,8 +82,8 @@
     },
     {
       "id": 4,
-      "city": "Nashville",
-      "address": "100 West"
+      "city": "Atlanta",
+      "address": "100 Georgia"
     }
   ],
   "owners": [

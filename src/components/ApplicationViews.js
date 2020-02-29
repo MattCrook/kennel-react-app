@@ -16,7 +16,7 @@ import Login from "./auth/Login";
 import EmployeeWithAnimals from "./employee/EmployeeWithAnimals";
 
 const ApplicationViews = () => {
-  const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+  const isAuthenticated = () => sessionStorage.getItem("credentials") !== null || localStorage.getItem("credentials") !== null;
   return (
     <React.Fragment>
       <Route
@@ -159,7 +159,6 @@ const ApplicationViews = () => {
       <Route
         path="/employees/:employeeId(\d+)/details"
         render={props => {
-          console.log("props:", {props});
           return <EmployeeWithAnimals {...props} />;
         }}
       />
