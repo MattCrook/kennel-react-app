@@ -1,4 +1,4 @@
-.animal-spotlight {
+.location-spotlight {
   max-width: 400px;
   display: flex;
   justify-content: flex-start;
@@ -6,11 +6,11 @@
   padding: 10px;
 }
 
-.animal-spotlight img {
+.location-spotlight img {
   width: 200px;
   margin-right: 20px;
 }
 
-.animal-spotlight p {
+.location-spotlight p {
   color: black;
 }

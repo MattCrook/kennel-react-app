@@ -13,6 +13,7 @@ import AnimalForm from "./animal/AnimalForm";
 import EmployeeForm from "./employee/EmployeeForm";
 import OwnerForm from "./owner/OwnerForm";
 import Login from "./auth/Login";
+import EmployeeWithAnimals from "./employee/EmployeeWithAnimals";
 
 const ApplicationViews = () => {
   const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
@@ -129,28 +130,39 @@ const ApplicationViews = () => {
         path="/animals/new"
         render={props => {
           if (isAuthenticated) {
-          return <AnimalForm {...props} />;
+            return <AnimalForm {...props} />;
           }
-          return <Redirect to="/login" />
+          return <Redirect to="/login" />;
         }}
       />
       <Route
         path="/employees/new"
         render={props =>
-          isAuthenticated()
-          ? <EmployeeForm {...props} />
-          : <Redirect to="/login" />
+          isAuthenticated() ? (
+            <EmployeeForm {...props} />
+          ) : (
+            <Redirect to="/login" />
+          )
         }
       />
       <Route
         path="/owners/new"
         render={props =>
-          isAuthenticated()
-          ? <OwnerForm {...props} />
-          : <Redirect to="/login" />
+          isAuthenticated() ? (
+            <OwnerForm {...props} />
+          ) : (
+            <Redirect to="/login" />
+          )
         }
       />
       <Route exact path="/login" component={Login} />
+      <Route
+        path="/employees/:employeeId(\d+)/details"
+        render={props => {
+          console.log("props:", {props});
+          return <EmployeeWithAnimals {...props} />;
+        }}
+      />
     </React.Fragment>
   );
 };

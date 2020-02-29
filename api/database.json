@@ -3,32 +3,32 @@
     {
       "id": 1,
       "name": "Doodles",
-      "breed": "Poodle"
+      "breed": "Poodle",
+      "employeeId": 2
     },
     {
       "id": 2,
       "name": "Decker",
-      "breed": "German Shepherd"
-    },
-    {
-      "id": 3,
-      "name": "Esme",
-      "breed": "Pitbull"
+      "breed": "German Shepherd",
+      "employeeId": 3
     },
     {
       "id": 4,
       "name": "Gus",
-      "breed": "Lab"
+      "breed": "Lab",
+      "employeeId": 1
     },
     {
       "id": 5,
       "name": "Lucy",
-      "breed": "Wheaton Terrier"
+      "breed": "Wheaton Terrier",
+      "employeeId": 3
     },
     {
       "name": "Teddy",
       "breed": "Golden Retriever",
-      "id": 6
+      "id": 6,
+      "employeeId": 1
     }
   ],
   "employees": [
@@ -49,12 +49,6 @@
       "name": "Emily",
       "role": "Receptionist",
       "favoriteBreed": "Wheaton Terrier"
-    },
-    {
-      "id": 4,
-      "name": "Tim",
-      "role": "Sales",
-      "favoriteBreed": "German Shepard"
     }
   ],
   "locations": [

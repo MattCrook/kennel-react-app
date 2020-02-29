@@ -14,6 +14,15 @@ const LocationManager = {
       method: "DELETE"
     });
     return await result.json();
+  },
+  getRandomId() {
+    return fetch(`${remoteURL}/locations`)
+      .then(result => result.json())
+      .then(locations => {
+        const randomIndex = Math.floor(Math.random() * locations.length);
+        const randomLocation = locations[randomIndex];
+        return randomLocation.id;
+      });
   }
 };
 

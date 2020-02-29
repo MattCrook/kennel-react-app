@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 const Login = props => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
-  const [isChecked, setIsChecked] = useState(undefined);
+  const [isChecked, setIsChecked] = useState(false);
 
   // Update state whenever an input field is edited
   const handleFieldChange = evt => {
@@ -11,16 +11,17 @@ const Login = props => {
   };
 
   const handleCheckBoxChange = event => {
-    const stateToChange = { ...isChecked };
-    stateToChange[event.target.id] = event.target.id;
-    setIsChecked(stateToChange);
+    // debugger;
+    // const stateToChange = { ...isChecked };
+    // stateToChange[event.target.checked] = event.target.checked;
+    // setIsChecked(event.target.checked);
   };
 
   const handleLogin = e => {
     e.preventDefault();
 
     // the push("/") says when the user logs in, redirect to the home page.
-
+// debugger;
     if (isChecked === true) {
       localStorage.setItem("credentials", JSON.stringify(credentials));
       props.history.push("/");
@@ -69,7 +70,7 @@ const Login = props => {
         <input
           type="checkbox"
           onChange={handleCheckBoxChange}
-          isChecked={isChecked}
+          // isChecked={isChecked}
           // disabled={isChecked}
         ></input>
       </fieldset>

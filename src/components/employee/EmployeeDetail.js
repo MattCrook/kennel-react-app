@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import EmployeeManager from "../../modules/EmployeeManager";
 import "./EmployeeDetail.css";
+import { Link, useHistory } from "react-router-dom";
 
 const EmployeeDetail = props => {
   const [employee, setEmployee] = useState({
@@ -42,10 +43,23 @@ const EmployeeDetail = props => {
         <picture>
           <img src={require("./download.jpeg")} alt="Favorite Dog" />
         </picture>
+        <Link to={`/employees/${props.employeeId}/details`}>
+          <button
+          type="button"
+          disabled={isLoading}
+          onClick={() => {
+            setIsLoading(false);
+            props.history.push(`/employees/${props.employeeId}`);
+          }}
+          >
+            Info
+          </button>
+        </Link>
         <button 
           type="button" 
           disabled={isLoading} 
-          onClick={handleDelete}>
+          onClick={handleDelete}
+          >
           Fire Employee
         </button>
       </div>
