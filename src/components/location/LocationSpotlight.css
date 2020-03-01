@@ -1,0 +1,16 @@
+.location-spotlight {
+  max-width: 400px;
+  display: flex;
+  justify-content: flex-start;
+  border: 1px solid gray;
+  padding: 10px;
+}
+
+.location-spotlight img {
+  width: 200px;
+  margin-right: 20px;
+}
+
+.location-spotlight p {
+  color: black;
+}

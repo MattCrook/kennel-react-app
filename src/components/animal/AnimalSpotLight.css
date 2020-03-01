@@ -1,0 +1,16 @@
+.animal-spotlight {
+  max-width: 300px;
+  display: flex;
+  justify-content: flex-start;
+  border: 1px solid gray;
+  padding: 10px;
+}
+
+.animal-spotlight img {
+  width: 100px;
+  margin-right: 10px;
+}
+
+.animal-spotlight p {
+  color: black;
+}

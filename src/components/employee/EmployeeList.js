@@ -21,6 +21,7 @@ const EmployeeList = (props) => {
       setEmployees(employeesFromAPI);
     } catch (error) {
       console.log(error);
+      window.alert("Employee not found");
     }
   };
 
@@ -47,6 +48,7 @@ const EmployeeList = (props) => {
             key={employee.id}
             employee={employee}
             fireEmployee={fireEmployee}
+            {...props}
           />
         ))}
       </div>

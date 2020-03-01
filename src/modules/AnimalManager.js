@@ -27,7 +27,25 @@ const AnimalManager = {
       body: JSON.stringify(newAnimal)
     });
     return await data.json();
-}
+  },
+  getRandomId() {
+    return fetch(`${remoteURL}/animals`)
+      .then(result => result.json())
+      .then(animals => {
+        const randomIndex = Math.floor(Math.random() * animals.length);
+        const randomAnimal = animals[randomIndex];
+        return randomAnimal.id;
+      });
+  },
+  update(editedAnimal) {
+    return fetch(`${remoteURL}/animals/${editedAnimal.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(editedAnimal)
+    }).then(data => data.json());
+  }
 };
 
 export default AnimalManager;

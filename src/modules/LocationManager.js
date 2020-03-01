@@ -14,6 +14,24 @@ const LocationManager = {
       method: "DELETE"
     });
     return await result.json();
+  },
+  getRandomId() {
+    return fetch(`${remoteURL}/locations`)
+      .then(result => result.json())
+      .then(locations => {
+        const randomIndex = Math.floor(Math.random() * locations.length);
+        const randomLocation = locations[randomIndex];
+        return randomLocation.id;
+      });
+  },
+  update(editedLocation) {
+    return fetch(`${remoteURL}/locations/${editedLocation.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(editedLocation)
+    }).then(data => data.json());
   }
 };
 

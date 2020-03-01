@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-
 const Login = props => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const [isChecked, setIsChecked] = useState(false);
 
   // Update state whenever an input field is edited
   const handleFieldChange = evt => {
@@ -10,19 +10,25 @@ const Login = props => {
     setCredentials(stateToChange);
   };
 
+  // if checked log the user in using local storage. If not, use session storage. 
+  // setIsChecked returns boolean, event.target has a "checked" attr...so passing it in.
+  const handleCheckBoxChange = event => {
+    setIsChecked(event.target.checked);
+  };
+
   const handleLogin = e => {
     e.preventDefault();
-    /*
-        For now, just store the email and password that
-        the customer enters into session storage.
-        ...Let's just trust the user... That's a good idea, right????
-    */
-    sessionStorage.setItem("credentials", JSON.stringify(credentials));
-    props.history.push("/animals");
-    props.history.push("/employees");
-    props.history.push("/owners");
 
+    // the push("/") says when the user logs in, redirect to the home page.
+    if (isChecked === true) {
+      localStorage.setItem("credentials", JSON.stringify(credentials));
+      props.history.push("/");
+    } else {
+      sessionStorage.setItem("credentials", JSON.stringify(credentials));
+      props.history.push("/");
+    }
   };
+
 
   return (
     <form onSubmit={handleLogin}>
@@ -49,6 +55,11 @@ const Login = props => {
           <label htmlFor="inputPassword">Password</label>
         </div>
         <button type="submit">Sign in</button>
+        <label>Remember Me</label>
+        <input
+          type="checkbox"
+          onChange={handleCheckBoxChange}>
+          </input>
       </fieldset>
     </form>
   );

@@ -15,6 +15,7 @@ const EmployeeManager = {
     });
     return await result.json();
   },
+
   async post(newEmployee) {
     const data = await fetch(`${remoteURL}/employees`, {
       method: "POST",
@@ -24,7 +25,24 @@ const EmployeeManager = {
       body: JSON.stringify(newEmployee)
     });
     return await data.json();
-}
+  },
+  // We can use json-server relationships to include related child information with one call.
+  //This is done with embed
+
+  async getWithAnimals(id) {
+    const data = await fetch(`${remoteURL}/employees/${id}?_embed=animals`);
+    return await data.json();
+  },
+
+  update(editedEmployee) {
+    return fetch(`${remoteURL}/employees/${editedEmployee.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(editedEmployee)
+    }).then(data => data.json());
+  }
 };
 
 export default EmployeeManager;

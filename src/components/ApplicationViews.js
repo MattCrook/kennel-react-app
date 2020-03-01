@@ -13,9 +13,16 @@ import AnimalForm from "./animal/AnimalForm";
 import EmployeeForm from "./employee/EmployeeForm";
 import OwnerForm from "./owner/OwnerForm";
 import Login from "./auth/Login";
+import EmployeeWithAnimals from "./employee/EmployeeWithAnimals";
+import AnimalEditForm from "./animal//EditAnimalForm";
+import EmployeeEditForm from "./employee/EmployeeEditForm";
+import OwnerEditForm from "./owner/EditOwnerForm";
+import LocationEditForm from "./location/LocationEditForm";
 
 const ApplicationViews = () => {
-  const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+  const isAuthenticated = () =>
+    sessionStorage.getItem("credentials") !== null ||
+    localStorage.getItem("credentials") !== null;
   return (
     <React.Fragment>
       <Route
@@ -28,15 +35,16 @@ const ApplicationViews = () => {
       <Route
         exact
         path="/animals"
-        render={props => {
-          if (isAuthenticated()) {
-            return <AnimalList {...props} />;
-          } else {
-            return <Redirect to="/login" component={Login} />;
-          }
-        }}
+        render={props =>
+          isAuthenticated() ? (
+            <AnimalList {...props} />
+          ) : (
+            <Redirect to="/login" component={Login} />
+          )
+        }
       />
       <Route
+        exact
         path="/animals/:animalId(\d+)" // says everything you pass in to animalId should be a digit. (/d+) is a Regex...
         render={props => {
           // Pass the animalId to the AnimalDetailComponent
@@ -52,22 +60,33 @@ const ApplicationViews = () => {
           }
         }}
       />
-
-      {/* // Route has props on it, and props has history on it, so to access
-      history we use the spread operator. */}
-
       <Route
         exact
-        path="/employees"
+        path="/animals/:animalId(\d+)/edit"
         render={props => {
           if (isAuthenticated()) {
-            return <EmployeeList {...props} />;
+            return <AnimalEditForm {...props} />;
           } else {
-            return <Redirect to="/login" component={Login} />;
+            return <Redirect to="/login" />;
           }
         }}
       />
+
+      {/* // Route has props on it, and props has history on it, so to access
+      history we use the spread operator. */}
       <Route
+        exact
+        path="/employees"
+        render={props =>
+          isAuthenticated() ? (
+            <EmployeeList {...props} />
+          ) : (
+            <Redirect to="/login" component={Login} />
+          )
+        }
+      />
+      <Route
+        exact
         path="/employees/:employeeId(\d+)"
         render={props => {
           if (isAuthenticated()) {
@@ -84,16 +103,28 @@ const ApplicationViews = () => {
       />
       <Route
         exact
-        path="/owners"
+        path="/employees/:employeeId(\d+)/edit"
         render={props => {
           if (isAuthenticated()) {
-            return <OwnerList {...props} />;
+            return <EmployeeEditForm {...props} />;
           } else {
-            return <Redirect to="/login" component={Login} />;
+            return <Redirect to="/login" />;
           }
         }}
       />
       <Route
+        exact
+        path="/owners"
+        render={props =>
+          isAuthenticated() ? (
+            <OwnerList {...props} />
+          ) : (
+            <Redirect to="/login" component={Login} />
+          )
+        }
+      />
+      <Route
+        exact
         path="/owners/:ownerId(\d+)"
         render={props => {
           if (isAuthenticated()) {
@@ -110,12 +141,24 @@ const ApplicationViews = () => {
       />
       <Route
         exact
+        path="/owners/:ownerId(\d+)/edit"
+        render={props => {
+          if (isAuthenticated()) {
+            return <OwnerEditForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+        exact
         path="/locations"
         render={props => {
           return <LocationList {...props} />;
         }}
       />
       <Route
+        exact
         path="/locations/:locationId(\d+)"
         render={props => {
           return (
@@ -127,24 +170,52 @@ const ApplicationViews = () => {
         }}
       />
       <Route
+        exact
+        path="/locations/:locationId(\d+)/edit"
+        render={props => {
+          if (isAuthenticated()) {
+            return <LocationEditForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
         path="/animals/new"
         render={props => {
-          return <AnimalForm {...props} />;
+          if (isAuthenticated) {
+            return <AnimalForm {...props} />;
+          }
+          return <Redirect to="/login" />;
         }}
       />
       <Route
         path="/employees/new"
-        render={props => {
-          return <EmployeeForm {...props} />;
-        }}
+        render={props =>
+          isAuthenticated() ? (
+            <EmployeeForm {...props} />
+          ) : (
+            <Redirect to="/login" />
+          )
+        }
       />
       <Route
         path="/owners/new"
+        render={props =>
+          isAuthenticated() ? (
+            <OwnerForm {...props} />
+          ) : (
+            <Redirect to="/login" />
+          )
+        }
+      />
+      <Route exact path="/login" component={Login} />
+      <Route
+        path="/employees/:employeeId(\d+)/details"
         render={props => {
-          return <OwnerForm {...props} />;
+          return <EmployeeWithAnimals {...props} />;
         }}
       />
-      <Route path="/login" component={Login} />
     </React.Fragment>
   );
 };
