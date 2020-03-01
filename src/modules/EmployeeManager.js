@@ -32,6 +32,16 @@ const EmployeeManager = {
   async getWithAnimals(id) {
     const data = await fetch(`${remoteURL}/employees/${id}?_embed=animals`);
     return await data.json();
+  },
+
+  update(editedEmployee) {
+    return fetch(`${remoteURL}/employees/${editedEmployee.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(editedEmployee)
+    }).then(data => data.json());
   }
 };
 

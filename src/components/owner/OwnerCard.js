@@ -12,6 +12,13 @@ const OwnerCard = props => {
         <button type="button" onClick={() => props.removeOwner(props.owner.id)}>
           Remove Owner
         </button>
+        <Link
+          to={`/owners/${props.owner.id}/edit`}
+          type="button"
+          onClick={() => props.history.push(`/owners/${props.owner.id}/edit`)}
+        >
+          <button>Edit</button>
+        </Link>
         <Link to={`/owners/${props.owner.id}`}>
           <button>Details</button>
         </Link>

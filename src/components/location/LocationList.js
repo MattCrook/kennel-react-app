@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import LocationManager from "../../modules/LocationManager";
 import LocationCard from "./LocationCard";
 
-const LocationList = () => {
+const LocationList = (props) => {
   //the initial state is an empty array
-  const [locations, setLocations] = useState([]);
+  const [storeLocations, setStoreLocations] = useState([]);
 
   const getLocations = async () => {
     try {
       const locationsFromAPI = await LocationManager.getAll();
-      setLocations(locationsFromAPI);
+      setStoreLocations(locationsFromAPI);
     } catch (error) {
       console.log(error);
     }
@@ -20,7 +20,7 @@ const LocationList = () => {
     try {
       LocationManager.deleteLocation(id);
       const locationsFromAPI = await LocationManager.getAll();
-      setLocations(locationsFromAPI);
+      setStoreLocations(locationsFromAPI);
     } catch (error) {
       console.log(error);
     }
@@ -28,14 +28,15 @@ const LocationList = () => {
   useEffect(() => {
     getLocations();
   }, []);
-
+  console.log({storeLocations});
   return (
     <div className="container-cards">
-      {locations.map(location => (
+      {storeLocations.map(storeLocation => (
         <LocationCard
-          key={location.id}
-          location={location}
+          key={storeLocation.id}
+          storeLocation={storeLocation}
           closeLocation={closeLocation}
+          {...props}
         />
       ))}
     </div>

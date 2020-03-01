@@ -23,6 +23,15 @@ const LocationManager = {
         const randomLocation = locations[randomIndex];
         return randomLocation.id;
       });
+  },
+  update(editedLocation) {
+    return fetch(`${remoteURL}/locations/${editedLocation.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(editedLocation)
+    }).then(data => data.json());
   }
 };
 

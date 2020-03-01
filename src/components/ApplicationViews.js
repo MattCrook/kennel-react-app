@@ -14,9 +14,15 @@ import EmployeeForm from "./employee/EmployeeForm";
 import OwnerForm from "./owner/OwnerForm";
 import Login from "./auth/Login";
 import EmployeeWithAnimals from "./employee/EmployeeWithAnimals";
+import AnimalEditForm from "./animal//EditAnimalForm";
+import EmployeeEditForm from "./employee/EmployeeEditForm";
+import OwnerEditForm from "./owner/EditOwnerForm";
+import LocationEditForm from "./location/LocationEditForm";
 
 const ApplicationViews = () => {
-  const isAuthenticated = () => sessionStorage.getItem("credentials") !== null || localStorage.getItem("credentials") !== null;
+  const isAuthenticated = () =>
+    sessionStorage.getItem("credentials") !== null ||
+    localStorage.getItem("credentials") !== null;
   return (
     <React.Fragment>
       <Route
@@ -38,6 +44,7 @@ const ApplicationViews = () => {
         }
       />
       <Route
+        exact
         path="/animals/:animalId(\d+)" // says everything you pass in to animalId should be a digit. (/d+) is a Regex...
         render={props => {
           // Pass the animalId to the AnimalDetailComponent
@@ -50,6 +57,17 @@ const ApplicationViews = () => {
             );
           } else {
             return <Redirect to="/login" component={Login} />;
+          }
+        }}
+      />
+      <Route
+        exact
+        path="/animals/:animalId(\d+)/edit"
+        render={props => {
+          if (isAuthenticated()) {
+            return <AnimalEditForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
           }
         }}
       />
@@ -68,6 +86,7 @@ const ApplicationViews = () => {
         }
       />
       <Route
+        exact
         path="/employees/:employeeId(\d+)"
         render={props => {
           if (isAuthenticated()) {
@@ -84,6 +103,17 @@ const ApplicationViews = () => {
       />
       <Route
         exact
+        path="/employees/:employeeId(\d+)/edit"
+        render={props => {
+          if (isAuthenticated()) {
+            return <EmployeeEditForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+        exact
         path="/owners"
         render={props =>
           isAuthenticated() ? (
@@ -94,6 +124,7 @@ const ApplicationViews = () => {
         }
       />
       <Route
+        exact
         path="/owners/:ownerId(\d+)"
         render={props => {
           if (isAuthenticated()) {
@@ -110,12 +141,24 @@ const ApplicationViews = () => {
       />
       <Route
         exact
+        path="/owners/:ownerId(\d+)/edit"
+        render={props => {
+          if (isAuthenticated()) {
+            return <OwnerEditForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+        exact
         path="/locations"
         render={props => {
           return <LocationList {...props} />;
         }}
       />
       <Route
+        exact
         path="/locations/:locationId(\d+)"
         render={props => {
           return (
@@ -124,6 +167,17 @@ const ApplicationViews = () => {
               {...props}
             />
           );
+        }}
+      />
+      <Route
+        exact
+        path="/locations/:locationId(\d+)/edit"
+        render={props => {
+          if (isAuthenticated()) {
+            return <LocationEditForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
         }}
       />
       <Route

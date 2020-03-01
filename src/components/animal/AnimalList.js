@@ -56,6 +56,7 @@ const AnimalList = (props) => {
           key={animal.id}
           animal={animal} // this is a prop ... in this case it is an object
           deleteAnimal={deleteAnimal}
+          {...props}
         />
       ))}
     </div>

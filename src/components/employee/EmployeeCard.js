@@ -16,26 +16,18 @@ const EmployeeCard = props => {
         >
           Fire
         </button>
+        <Link
+          to={`/employees/${props.employee.id}/edit`}
+          type="button"
+          onClick={() => props.history.push(`/employees/${props.employee.id}/edit`)}
+        >
+          <button>Edit</button>
+        </Link>
         <Link to={`/employees/${props.employee.id}`}>
-          <button
-          // type="button"
-          // onClick={() => {
-          //   props.history.push(`/employees/${props.employee.id}/details`);
-          // }}
-          >
+          <button>
             Details
           </button>
         </Link>
-        {/* <Link to={`/employees/${props.employee.id}/details`}>
-          <button
-            type="button"
-            onClick={() => {
-              props.history.push(`/employees/${props.employee.id}`);
-            }}
-          >
-            Info
-          </button>
-        </Link> */}
       </div>
     </div>
   );
