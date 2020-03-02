@@ -30,7 +30,8 @@ const LocationDetail = props => {
           <img src={require("./nashville.jpeg")} alt="Nashville Skyline" />
         </picture>
         <h3>
-          City: <span style={{ color: "darklategrey" }}>{storeLocation.city}</span>
+          City:{" "}
+          <span style={{ color: "darklategrey" }}>{storeLocation.city}</span>
         </h3>
         <p className="card-address">Address: {storeLocation.address}</p>
         <button
