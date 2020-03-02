@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import AnimalManager from "../../modules/AnimalManager";
+import EmployeeManager from "../../modules/EmployeeManager";
 import "./AnimalForm.css";
 
 const AnimalEditForm = props => {
   const [animal, setAnimal] = useState({ name: "", breed: "" });
+  const [employees, setEmployees] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFieldChange = event => {
@@ -18,9 +20,10 @@ const AnimalEditForm = props => {
 
     // This is an edit, so we need the id
     const editedAnimal = {
-      id: props.match.params.animalId, //how we are going to get the animal id that is passed into the url
+      id: props.match.params.animalId, //how we are going to get the animal id that is passed into the url.
       name: animal.name,
-      breed: animal.breed
+      breed: animal.breed,
+      employeeId: parseInt(animal.employeeId) // parseInt() is for parsing (like in json server) to turn string into integer
     };
 
     // once done, we redirect user to animal list
@@ -31,8 +34,11 @@ const AnimalEditForm = props => {
 
   useEffect(() => {
     AnimalManager.get(props.match.params.animalId).then(animal => {
-      setAnimal(animal);
-      setIsLoading(false);
+      EmployeeManager.getAll().then(employees => {
+        setAnimal(animal);
+        setEmployees(employees);
+        setIsLoading(false); // very important we do setIsLoadiing AFTER we get ALL the data back. After we set the state.
+      });
     });
   }, []);
 
@@ -60,11 +66,24 @@ const AnimalEditForm = props => {
               value={animal.breed}
             />
             <label htmlFor="breed">Breed</label>
+            <select
+              className="form-control"
+              id="employeeId"
+              value={animal.employeeId}
+              onChange={handleFieldChange}
+            >
+              {employees.map(employee => (
+                <option key={employee.id} value={employee.id}>
+                  {employee.name}
+                </option>
+              ))}
+            </select>
+            <label htmlFor="employeeId">Employee</label>
           </div>
           <div className="alignRight">
             <button
               type="button"
-              disabled={isLoading} // disabled will always take boolean value, isLoading infers that it is a boolean. 
+              disabled={isLoading} // disabled will always take boolean value, isLoading infers that it is a boolean.
               onClick={updateExistingAnimal}
               className="btn btn-primary"
             >
