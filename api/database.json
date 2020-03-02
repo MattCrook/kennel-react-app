@@ -43,25 +43,29 @@
       "id": 1,
       "name": "Steve",
       "role": "Tour Guide",
-      "favoriteBreed": "Golden Retriever"
+      "favoriteBreed": "Golden Retriever",
+      "locationId": 1
     },
     {
       "id": 2,
       "name": "Deck",
       "role": "Groomer",
-      "favoriteBreed": "Pitbull"
+      "favoriteBreed": "Pitbull",
+      "locationId": 2
     },
     {
       "id": 3,
       "name": "Emily",
       "role": "Receptionist",
-      "favoriteBreed": "Wheaton Terrier"
+      "favoriteBreed": "Wheaton Terrier",
+      "locationId": 3
     },
     {
       "name": "Dock",
       "role": "Ops",
       "favoriteBreed": "Kubernetes",
-      "id": 4
+      "id": 4,
+      "locationId": 1
     }
   ],
   "locations": [

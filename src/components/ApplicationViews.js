@@ -18,6 +18,7 @@ import AnimalEditForm from "./animal//EditAnimalForm";
 import EmployeeEditForm from "./employee/EmployeeEditForm";
 import OwnerEditForm from "./owner/EditOwnerForm";
 import LocationEditForm from "./location/LocationEditForm";
+import LocationWithEmployees from "./location/LocationWithEmployees";
 
 
 const ApplicationViews = props => {
@@ -215,6 +216,9 @@ const ApplicationViews = props => {
           return <EmployeeWithAnimals {...props} />;
         }}
       />
+      <Route path="/locations/:locationId(\d+)/employee" render={(props) => {
+    return <LocationWithEmployees {...props} />
+}} />
     </React.Fragment>
   );
 };
