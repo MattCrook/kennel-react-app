@@ -19,10 +19,9 @@ import EmployeeEditForm from "./employee/EmployeeEditForm";
 import OwnerEditForm from "./owner/EditOwnerForm";
 import LocationEditForm from "./location/LocationEditForm";
 
-const ApplicationViews = () => {
-  const isAuthenticated = () =>
-    sessionStorage.getItem("credentials") !== null ||
-    localStorage.getItem("credentials") !== null;
+const ApplicationViews = props => {
+  const hasUser = props.hasUser;
+  const setUser = props.setUser;
   return (
     <React.Fragment>
       <Route
@@ -36,7 +35,7 @@ const ApplicationViews = () => {
         exact
         path="/animals"
         render={props =>
-          isAuthenticated() ? (
+          hasUser ? (
             <AnimalList {...props} />
           ) : (
             <Redirect to="/login" component={Login} />
@@ -48,7 +47,7 @@ const ApplicationViews = () => {
         path="/animals/:animalId(\d+)" // says everything you pass in to animalId should be a digit. (/d+) is a Regex...
         render={props => {
           // Pass the animalId to the AnimalDetailComponent
-          if (isAuthenticated()) {
+          if (hasUser) {
             return (
               <AnimalDetail
                 animalId={parseInt(props.match.params.animalId)}
@@ -64,7 +63,7 @@ const ApplicationViews = () => {
         exact
         path="/animals/:animalId(\d+)/edit"
         render={props => {
-          if (isAuthenticated()) {
+          if (hasUser) {
             return <AnimalEditForm {...props} />;
           } else {
             return <Redirect to="/login" />;
@@ -78,7 +77,7 @@ const ApplicationViews = () => {
         exact
         path="/employees"
         render={props =>
-          isAuthenticated() ? (
+          hasUser ? (
             <EmployeeList {...props} />
           ) : (
             <Redirect to="/login" component={Login} />
@@ -89,7 +88,7 @@ const ApplicationViews = () => {
         exact
         path="/employees/:employeeId(\d+)"
         render={props => {
-          if (isAuthenticated()) {
+          if (hasUser) {
             return (
               <EmployeeDetail
                 employeeId={parseInt(props.match.params.employeeId)}
@@ -105,7 +104,7 @@ const ApplicationViews = () => {
         exact
         path="/employees/:employeeId(\d+)/edit"
         render={props => {
-          if (isAuthenticated()) {
+          if (hasUser) {
             return <EmployeeEditForm {...props} />;
           } else {
             return <Redirect to="/login" />;
@@ -116,7 +115,7 @@ const ApplicationViews = () => {
         exact
         path="/owners"
         render={props =>
-          isAuthenticated() ? (
+          hasUser ? (
             <OwnerList {...props} />
           ) : (
             <Redirect to="/login" component={Login} />
@@ -127,7 +126,7 @@ const ApplicationViews = () => {
         exact
         path="/owners/:ownerId(\d+)"
         render={props => {
-          if (isAuthenticated()) {
+          if (hasUser) {
             return (
               <OwnerDetail
                 ownerId={parseInt(props.match.params.ownerId)}
@@ -143,7 +142,7 @@ const ApplicationViews = () => {
         exact
         path="/owners/:ownerId(\d+)/edit"
         render={props => {
-          if (isAuthenticated()) {
+          if (hasUser) {
             return <OwnerEditForm {...props} />;
           } else {
             return <Redirect to="/login" />;
@@ -173,7 +172,7 @@ const ApplicationViews = () => {
         exact
         path="/locations/:locationId(\d+)/edit"
         render={props => {
-          if (isAuthenticated()) {
+          if (hasUser) {
             return <LocationEditForm {...props} />;
           } else {
             return <Redirect to="/login" />;
@@ -183,7 +182,7 @@ const ApplicationViews = () => {
       <Route
         path="/animals/new"
         render={props => {
-          if (isAuthenticated) {
+          if (hasUser) {
             return <AnimalForm {...props} />;
           }
           return <Redirect to="/login" />;
@@ -192,24 +191,23 @@ const ApplicationViews = () => {
       <Route
         path="/employees/new"
         render={props =>
-          isAuthenticated() ? (
-            <EmployeeForm {...props} />
-          ) : (
-            <Redirect to="/login" />
-          )
+          hasUser ? <EmployeeForm {...props} /> : <Redirect to="/login" />
         }
       />
       <Route
         path="/owners/new"
         render={props =>
-          isAuthenticated() ? (
-            <OwnerForm {...props} />
-          ) : (
-            <Redirect to="/login" />
-          )
+          hasUser ? <OwnerForm {...props} /> : <Redirect to="/login" />
         }
       />
-      <Route exact path="/login" component={Login} />
+      <Route
+        exact
+        path="/login"
+        render={props => {
+          return <Login setUser={setUser} {...props} />;
+        }}
+      />
+
       <Route
         path="/employees/:employeeId(\d+)/details"
         render={props => {
