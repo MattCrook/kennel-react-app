@@ -6,8 +6,13 @@ const OwnerCard = props => {
     <div className="card">
       <div className="card-content">
         <h3 className="card-ownername">Name: {props.owner.name}</h3>
-        <p className="card-phonenumber">
-          Phone Number: {props.owner.phoneNumber}
+        <p className="card-animal-name">
+          Dog in Kennel:{" "}
+          <strong>
+            {props.owner.animals.map(animal => (
+              <li>{animal.name}</li>
+            ))}
+          </strong>
         </p>
         <button type="button" onClick={() => props.removeOwner(props.owner.id)}>
           Remove Owner

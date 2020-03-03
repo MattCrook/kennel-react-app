@@ -28,7 +28,6 @@ const LocationList = (props) => {
   useEffect(() => {
     getLocations();
   }, []);
-  console.log({storeLocations});
   return (
     <div className="container-cards">
       {storeLocations.map(storeLocation => (

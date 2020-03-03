@@ -10,7 +10,6 @@ const LocationWithEmployees = props => {
     LocationManager.getWithEmployees(props.match.params.locationId)
     .then(
       resultFromAPI => {
-        console.log({ resultFromAPI });
         setEmployee(resultFromAPI);
         setStoreLocation(resultFromAPI.locations);
       }

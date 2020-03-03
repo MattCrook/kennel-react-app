@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import EmployeeManager from "../../modules/EmployeeManager";
 import "./EmployeeForm.css";
+import LocationManager from "../../modules/LocationManager";
 
 const EmployeeEditForm = props => {
   const [employee, setEmployee] = useState({
@@ -8,6 +9,7 @@ const EmployeeEditForm = props => {
     role: "",
     favoriteBreed: ""
   });
+  const [storeLocations, setStoreLocations] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFieldChange = event => {
@@ -36,8 +38,11 @@ const EmployeeEditForm = props => {
 
   useEffect(() => {
     EmployeeManager.get(props.match.params.employeeId).then(employee => {
+      LocationManager.getAll().then(storeLocations => {
         setEmployee(employee);
-      setIsLoading(false);
+        setStoreLocations(storeLocations);
+        setIsLoading(false);
+      });
     });
   }, []);
 
@@ -74,6 +79,19 @@ const EmployeeEditForm = props => {
               value={employee.favoriteBreed}
             />
             <label htmlFor="breed">Favorite Breed</label>
+            <label htmlFor="location">Select Store Location</label>
+            <select
+              className="form-control"
+              id="locationId"
+              value={employee.locationId}
+              onChange={handleFieldChange}
+            >
+              {storeLocations.map(storeLocation => (
+                <option key={storeLocation.id} value={storeLocation.id}>
+                  {storeLocation.city}, {storeLocation.address}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="alignRight">
             <button

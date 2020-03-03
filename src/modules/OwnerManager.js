@@ -33,7 +33,11 @@ const OwnerManager = {
       },
       body: JSON.stringify(editedOwner)
     }).then(data => data.json());
-  }
+  },
+  async getWithAnimals() {
+    const data = await fetch(`${remoteURL}/owners/?_embed=animals`);
+    return await data.json();
+  },
 };
 
 export default OwnerManager;
