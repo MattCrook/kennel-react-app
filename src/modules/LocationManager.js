@@ -32,7 +32,11 @@ const LocationManager = {
       },
       body: JSON.stringify(editedLocation)
     }).then(data => data.json());
-  }
+  },
+  async getWithEmployees(id) {
+    const data = await fetch(`${remoteURL}/employees/${id}?_embed=locations`);
+    return await data.json();
+  },
 };
 
 export default LocationManager;

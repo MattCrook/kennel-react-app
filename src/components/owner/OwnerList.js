@@ -5,27 +5,28 @@ import OwnerManager from "../../modules/OwnerManager";
 const OwnerList = props => {
   const [owners, setOwners] = useState([]);
 
-  const getOwners = async () => {
-    try {
-      const OwnersFromAPI = await OwnerManager.getAll();
-      setOwners(OwnersFromAPI);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const removeOwner = async id => {
     try {
       OwnerManager.delete(id);
-      const ownersFromAPI = OwnerManager.getAll();
+      const ownersFromAPI = await OwnerManager.getAll();
       setOwners(ownersFromAPI);
     } catch (error) {
       console.log(error);
     }
   };
 
+
+  const getOwnerWithAnimal = async () => {
+    try {
+      const ownerAnimalsData = await OwnerManager.getWithAnimals();
+        setOwners(ownerAnimalsData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    getOwners();
+    getOwnerWithAnimal();
   }, []);
 
   return (

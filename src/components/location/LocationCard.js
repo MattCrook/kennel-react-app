@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./location.css";
 const LocationCard = props => {
   // console.log("storeLocation", props.storeLocation);
-  console.log("props", props);
+  // console.log("props", props);
 
   return (
     <div className="card">
