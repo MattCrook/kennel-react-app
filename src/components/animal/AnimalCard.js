@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 
 const AnimalCard = props => {
   return (
-    <div className="card">
-      <div className="card-content">
+    <div className="animal-card">
+      <div className="animal-card-content">
         <picture>
           <img src={require("./dog.svg")} alt="My Dog" />
         </picture>
