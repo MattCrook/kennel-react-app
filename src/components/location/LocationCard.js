@@ -6,8 +6,8 @@ const LocationCard = props => {
   // console.log("props", props);
 
   return (
-    <div className="card">
-      <div className="card-content">
+    <div className="location-card">
+      <div className="location-card-content">
         <h3>City: {props.storeLocation.city}</h3>
         <p className="card-address">Address: {props.storeLocation.address}</p>
         <button

@@ -24,8 +24,8 @@ const LocationDetail = props => {
   };
 
   return (
-    <div className="card">
-      <div className="card-content">
+    <div className="location-card">
+      <div className="location-card-content">
         <picture>
           <img src={require("./nashville.jpeg")} alt="Nashville Skyline" />
         </picture>

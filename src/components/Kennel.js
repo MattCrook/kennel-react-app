@@ -8,7 +8,7 @@ const Kennel = () => {
     sessionStorage.getItem("credentials") !== null ||
     localStorage.getItem("credentials") !== null;
 
-  const [hasUser, setHasUser] = useState(isAuthenticated());
+  const [hasUserFromState, setHasUser] = useState(isAuthenticated());
 
   const setUser = user => {
     sessionStorage.setItem("credentials", JSON.stringify(user));
@@ -31,8 +31,8 @@ const Kennel = () => {
 
   return (
     <>
-      <NavBar hasUser={hasUser} clearUser={clearUser} setUser={setUser}/>
-      <ApplicationViews hasUser={hasUser} setUser={setUser} />
+      <NavBar hasUser={hasUserFromState} clearUser={clearUser} setUser={setUser}/>
+      <ApplicationViews hasUser={hasUserFromState} setUser={setUser} />
     </>
   );
 };

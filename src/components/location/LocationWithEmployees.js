@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import LocationManager from "../../modules/LocationManager";
 import LocationDetail from "../location/LocationDetail";
+import "./LocationWithEmployee.css"
 
 const LocationWithEmployees = props => {
   const [employee, setEmployee] = useState({});
@@ -16,7 +17,7 @@ const LocationWithEmployees = props => {
     );
   }, []);
   return (
-    <div className="card">
+    <div className="location-with-employee-card">
       <h3>Employee: {employee.name}</h3>
       <p>Role: {employee.role}</p>
       <p>Favorite Breed: {employee.favoriteBreed}</p>

@@ -4,6 +4,8 @@ const Login = props => {
   const [isChecked, setIsChecked] = useState(false);
 
   // Update state whenever an input field is edited
+  // credentials refers to credentials above. The object in state. With empty strings. Making copy of object. State to change is = { email: "", password: "" } the first time.
+  // could just type out the object,but spread operator is safer(nobugs) quicker. Preferred way of copying object.
   const handleFieldChange = evt => {
     const stateToChange = { ...credentials };
     stateToChange[evt.target.id] = evt.target.value;
